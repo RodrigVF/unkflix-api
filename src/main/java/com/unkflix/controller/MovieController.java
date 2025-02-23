@@ -6,6 +6,7 @@ import com.unkflix.controller.response.MovieResponse;
 import com.unkflix.entity.Movie;
 import com.unkflix.mapper.MovieMapper;
 import com.unkflix.service.MovieService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,13 +45,13 @@ public class MovieController {
     }
 
     @PostMapping
-    public ResponseEntity<MovieResponse> save(@RequestBody MovieRequest request) {
+    public ResponseEntity<MovieResponse> save(@Valid @RequestBody MovieRequest request) {
         Movie savedMovie = movieService.save(MovieMapper.toMovie(request));
         return ResponseEntity.ok(MovieMapper.toMovieResponse(savedMovie));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MovieResponse> update(@PathVariable Long id, @RequestBody MovieRequest request) {
+    public ResponseEntity<MovieResponse> update(@PathVariable Long id, @Valid @RequestBody MovieRequest request) {
         return movieService.update(id, MovieMapper.toMovie(request))
                 .map(movie -> ResponseEntity.ok(MovieMapper.toMovieResponse(movie)))
                 .orElse(ResponseEntity.notFound().build());
