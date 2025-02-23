@@ -14,3 +14,7 @@ spring:
 
   flyway:
     enabled:true
+
+unkflix:
+  security:
+    secret: "palavra-secreta-dev"
