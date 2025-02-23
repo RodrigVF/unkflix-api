@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: unkflix
+
+  datasource:
+    url: jdbc:postgresql://localhost:5401/unkflix
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+  flyway:
+    enabled:true
