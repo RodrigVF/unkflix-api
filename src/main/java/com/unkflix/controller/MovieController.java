@@ -1,6 +1,7 @@
 package com.unkflix.controller;
 
 
+import com.unkflix.controller.doc.MovieControllerDoc;
 import com.unkflix.controller.request.MovieRequest;
 import com.unkflix.controller.response.MovieResponse;
 import com.unkflix.entity.Movie;
@@ -17,7 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/unkflix/movie")
 @RequiredArgsConstructor
-public class MovieController {
+public class MovieController implements MovieControllerDoc {
 
     private final MovieService movieService;
 
