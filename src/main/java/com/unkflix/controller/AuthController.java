@@ -16,10 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/unkflix/auth")
@@ -50,6 +47,11 @@ public class AuthController {
         } catch (BadCredentialsException e) {
             throw new UsernameOrPasswordInvalidException("Usuário ou senha inválido.");
         }
+    }
+
+    @GetMapping("/validate")
+    public ResponseEntity<?> validateToken() {
+        return ResponseEntity.ok().build();
     }
 
 }
